@@ -27,7 +27,8 @@ SECRET_KEY = 'django-insecure-bef15(0coai++m8(1)hxow2p2!f%isv+_r&k39ba+qu@dl02q2
 DEBUG = True
 
 ALLOWED_HOSTS = [
-                    str(socket.gethostbyname(socket.gethostname()))#works with dynamic ips
+                    str(socket.gethostbyname(socket.gethostname())),#works with dynamic ips
+                    'localhost','127.0.0.1'
                 ]
 
 

@@ -13,24 +13,20 @@ class BodyStyle(models.Model):
     #fields
     name = CharField(max_length=50,verbose_name="Car body style",help_text="e.g. Sedan, Carbriolet, etc.")
     #methods
-    def __str__(self) -> str:
+    def __str__(self):
         """string based representation of an object"""
-        return super().__str__()
+        return self.name
 
 class Car(models.Model):
     """model representing car in general"""
     #fields
     carModel = CharField(max_length=50)
     brand = ForeignKey("Brand",on_delete=models.SET_NULL, null=True)
-    color = CharField(max_length=20)
     bodyStyle = ManyToManyField(BodyStyle)
 
     #methods
-    def __str__(self) -> str:
-        return super().__str__()
-    #possible implementation of __str__() if the one above is buggy
-    # def __str__(self):
-    #     return self.carModel
+    def __str__(self):
+        return self.carModel
     def get_absolute_url(self):
         """Returns the url to access a detail record for this car."""
         return reverse("car-detail", args=[str(self.id)])
@@ -43,6 +39,7 @@ class CarInstance(models.Model):
     car = ForeignKey(Car, on_delete=RESTRICT, null=True)
     due_back = models.DateField(null=True, blank=True)
     year = models.IntegerField()
+    color = CharField(max_length=20, null=True)
     plate = CharField(max_length=8, 
                       verbose_name="Vehicle registration plate",
                       unique=True,
@@ -86,6 +83,6 @@ class Brand(models.Model):
         """Returns the url to access a particular brand instance."""
         return reverse('brand-detail', args=[str(self.id)])
     
-    def __str__(self) -> str:
-        return super().__str__()
+    def __str__(self):
+        return self.name
     
