@@ -1,0 +1,23 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Welcome to your CarRent Home ;)</h1>
+<p>Welcome to Carrent, a website developed by <em>Misha Pidlisnyi</em>!</p>
+<h2>Dynamic content</h2>
+<p>The rent service has the following record counts:</p>
+<div  class="dynamic">
+    <ul>
+        <li><strong>Models: </strong>{{ carNum }}</li>
+        <li><strong>Cars: </strong>{{ instancesNum }}</li>
+        <li><strong>Available cars: </strong>{{ availableInstances }}</li>
+        <li><strong>Brands: </strong>{{ brandNum }}</li>
+    </ul>
+</div>
+<div class="logo">
+    {% load static %}
+    <img src="{% static 'img/kinda_logo.png' %}" 
+        alt="Ye be logo"
+        style="width: 450px; height: 100px;">
+</div>
+<div class="clearfix"></div>
+{% endblock %}
