@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Car model: {{ car.carModel }}</h1>
+    <p><strong>Brand:</strong> <a href="">{{ car.brand }}</a></p>
+    <p><strong>Body Style: </strong>{{car.bodyStyle.all|join:" "}}</p>
+
+    <div style="margin-left:20px;margin-top:20px">
+        <h4>Examples:</h4>
+
+        {% for inst in car.carinstance_set.all %}
+            <div class="details">
+                <hr>
+                <p class="{% if inst.status == 'a' %}text-success{% elif inst.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+                    {{inst.get_status_display}}
+                </p>
+                {% if inst.status != 'a' %}
+                    <p><strong>Will be available: </strong>{{inst.due_back}}</p>
+                {%endif%}
+                <p><strong>Color: </strong>{{inst.color}}</p>
+                <p><strong>Registration plate: </strong>{{inst.plate}}</p>
+                <p class="text-muted"><strong>ID:</strong>{{inst.id}}</p>
+                {% load static %}
+                <img src="{% static 'img/kinda_logo.png' %}" 
+                     alt="Ye be logo"
+                     style="width: 50px; height: 10px;">
+                
+            </div>
+            <div class="clearfix">
+                
+            </div>
+        {%endfor%}
+    </div>
+{%endblock%}

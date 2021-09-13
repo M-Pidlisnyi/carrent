@@ -1,5 +1,5 @@
 #static files
-carrent/static
+carrent/static/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

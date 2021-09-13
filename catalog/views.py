@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.views import generic 
 from .models import BodyStyle, Brand, Car, CarInstance
 
 # Create your views here.
@@ -21,3 +22,9 @@ def index(request):
     # Render the HTML template index.html with the data in the context variable
     return render(request, 'index.html', context=context)
 
+class  CarListView(generic.ListView):
+    model = Car
+
+class CarDetailView(generic.DetailView):
+    model = Car
+    
