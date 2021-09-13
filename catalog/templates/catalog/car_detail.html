@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>Car model: {{ car.carModel }}</h1>
-    <p><strong>Brand:</strong> <a href="">{{ car.brand }}</a></p>
+    <p><strong>Brand:</strong> <a href="{{car.brand.get_absolute_url}}">{{ car.brand }}</a></p>
     <p><strong>Body Style: </strong>{{car.bodyStyle.all|join:" "}}</p>
 
     <div style="margin-left:20px;margin-top:20px">

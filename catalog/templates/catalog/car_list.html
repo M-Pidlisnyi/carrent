@@ -6,11 +6,11 @@
     <ul>
         {% for car in car_list %}
         <li>
-            {{car.brand}} <a href="{{ car.get_absolute_url }}">{{car.carModel}}</a>
+            <a href="{{car.brand.get_absolute_url}}">{{car.brand}}</a> <a href="{{ car.get_absolute_url }}">{{car.carModel}}</a>
         </li>
     {% endfor %}
     </ul>
     {% else %}
-        <p>There's no cars to rent</p>
+        <p>There are no cars to rent</p>
     {% endif %}
 {%endblock%}

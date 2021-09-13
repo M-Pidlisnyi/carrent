@@ -1,5 +1,7 @@
+from django.db import connection
 from django.shortcuts import render
-from django.views import generic 
+from django.views import generic
+from django.views.generic.edit import ModelFormMixin 
 from .models import BodyStyle, Brand, Car, CarInstance
 
 # Create your views here.
@@ -28,4 +30,10 @@ class  CarListView(generic.ListView):
 
 class CarDetailView(generic.DetailView):
     model = Car
+
+class BrandListView(generic.ListView):
+    model = Brand
+    paginate_by = 5
     
+class BrandDetailView(generic.DetailView):
+    model = Brand

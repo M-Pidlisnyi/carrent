@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>{{brand.name}}</h1>
+<p><i>Founded in {{brand.creationDate}}</i></p>
+{% if brand.companyOwner %}
+<p><i>A {{brand.companyOwner}} company trade mark</i></p>
+{% endif %}
+<h3>We have:</h3>
+<ul>
+    {% for car in brand.car_set.all %}
+    <li>
+        <p>
+            {{brand.name}} <a href="{{car.get_absolute_url}}">{{car.carModel}}</a>
+        </p>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
