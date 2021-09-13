@@ -7,9 +7,9 @@
 
     <div style="margin-left:20px;margin-top:20px">
         <h4>Examples:</h4>
-
+        <div class="card-deck">
         {% for inst in car.carinstance_set.all %}
-            <div class="card" style="height: 65%; width: 30%;">
+            <div class="card" style="max-width: 25%;">
                 {% load static %}
                 <img class="card-img"
                      src="{% static 'img/kinda_logo.png' %}" 
@@ -33,11 +33,12 @@
                             <p><strong>Registration plate: </strong>{{inst.plate}}</p>
                         </li>
                         <li class="list-group-item"  style="padding: 0 0 0 0;">
-                            <p class="text-muted"><strong>ID:</strong>{{inst.id}}</p>
+                            <p class="text-muted"><small><strong>ID:</strong>{{inst.id}}</small></p>
                         </li>
                     </ul>
                 </div>
             </div>
         {%endfor%}
+        </div>
     </div>
 {%endblock%}
