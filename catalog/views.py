@@ -24,6 +24,7 @@ def index(request):
 
 class  CarListView(generic.ListView):
     model = Car
+    paginate_by = 5
 
 class CarDetailView(generic.DetailView):
     model = Car
