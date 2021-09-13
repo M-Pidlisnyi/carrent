@@ -9,25 +9,34 @@
         <h4>Examples:</h4>
 
         {% for inst in car.carinstance_set.all %}
-            <div class="details">
-                <hr>
-                <p class="{% if inst.status == 'a' %}text-success{% elif inst.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
-                    {{inst.get_status_display}}
-                </p>
-                {% if inst.status != 'a' %}
-                    <p><strong>Will be available: </strong>{{inst.due_back}}</p>
-                {%endif%}
-                <p><strong>Color: </strong>{{inst.color}}</p>
-                <p><strong>Registration plate: </strong>{{inst.plate}}</p>
-                <p class="text-muted"><strong>ID:</strong>{{inst.id}}</p>
+            <div class="card" style="height: 65%; width: 30%;">
                 {% load static %}
-                <img src="{% static 'img/kinda_logo.png' %}" 
-                     alt="Ye be logo"
-                     style="width: 50px; height: 10px;">
-                
-            </div>
-            <div class="clearfix">
-                
+                <img class="card-img"
+                     src="{% static 'img/kinda_logo.png' %}" 
+                     alt="Ye be logo">
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item" style="padding: 0 0 0 0;">
+                            <p class="{% if inst.status == 'a' %}text-success{% elif inst.status == 'm' %}text-danger{% else %}text-warning{% endif %}">
+                                {{inst.get_status_display}}
+                            </p>
+                        </li>
+                        <li class="list-group-item"  style="padding: 0 0 0 0;">
+                            {% if inst.status != 'a' %}
+                                <p><strong>Will be available: </strong>{{inst.due_back}}</p>
+                            {%endif%}
+                        </li>
+                        <li class="list-group-item"  style="padding: 0 0 0 0;">
+                            <p><strong>Color: </strong>{{inst.color}}</p>
+                        </li>
+                        <li class="list-group-item"  style="padding: 0 0 0 0;">
+                            <p><strong>Registration plate: </strong>{{inst.plate}}</p>
+                        </li>
+                        <li class="list-group-item"  style="padding: 0 0 0 0;">
+                            <p class="text-muted"><strong>ID:</strong>{{inst.id}}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         {%endfor%}
     </div>
