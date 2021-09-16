@@ -3,6 +3,7 @@
 {% block content %}
     <h1>Car model: {{ car.carModel }}</h1>
     <p><strong>Brand:</strong> <a href="{{car.brand.get_absolute_url}}">{{ car.brand }}</a></p>
+    <img src = "{{car.image.path}}" alt="picture support is not implemented and won't be in near time" style="height: 30%; width: 50%;">
     <p><strong>Body Style: </strong>{{car.bodyStyle.all|join:" "}}</p>
 
     <div style="margin-left:20px;margin-top:20px">
