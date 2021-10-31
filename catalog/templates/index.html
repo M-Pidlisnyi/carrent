@@ -12,6 +12,9 @@
         <li><strong>Available cars: </strong>{{ availableInstances }}</li>
         <li><strong>Brands: </strong>{{ brandNum }}</li>
     </ul>
+    <p>
+        You have visited this site {{visits_num}} time{{visits_num|pluralize}}
+    </p>
 </div>
 <div class="logo">
     {% load static %}

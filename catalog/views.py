@@ -13,12 +13,16 @@ def index(request):
     availableInstances = CarInstance.objects.filter(status__exact='a').count()
 
     brandNum = Brand.objects.all().count()
+    
+    visits_num = request.session.get('visits_num', 0)
+    request.session['visits_num'] = visits_num + 1
 
     context = {
         'carNum': carNum,
         'instancesNum': instancesNum,
         'availableInstances': availableInstances,
-        'brandNum': brandNum
+        'brandNum': brandNum,
+        'visits_num': visits_num
     }
 
     # Render the HTML template index.html with the data in the context variable
