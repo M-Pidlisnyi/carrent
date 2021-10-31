@@ -13,7 +13,11 @@
         <li><strong>Brands: </strong>{{ brandNum }}</li>
     </ul>
     <p>
+        {% if visits_num %}
         You have visited this site {{visits_num}} time{{visits_num|pluralize}}
+        {% else %}
+        Welcome on your first time here
+        {% endif %}
     </p>
 </div>
 <div class="logo">

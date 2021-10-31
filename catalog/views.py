@@ -2,6 +2,7 @@ from django.db import connection
 from django.shortcuts import render
 from django.views import generic
 from django.views.generic.edit import ModelFormMixin 
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import BodyStyle, Brand, Car, CarInstance
 
 # Create your views here.
@@ -41,3 +42,12 @@ class BrandListView(generic.ListView):
     
 class BrandDetailView(generic.DetailView):
     model = Brand
+
+class OnRentView(LoginRequiredMixin, generic.ListView):
+    """Generic class-based view listing cars on rent to current user."""
+    model = CarInstance
+    template_name ='catalog/on_rent_view.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        return CarInstance.objects.filter(renter=self.request.user).filter(status__exact="o").order_by("due_back")

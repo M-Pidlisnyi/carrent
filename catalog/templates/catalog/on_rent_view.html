@@ -1,0 +1,19 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Rented cars</h1>
+    
+    {% if carinstance_list %}
+    <ul>
+      
+      {% for instance in carinstance_list %}
+      <li>
+        <a href="{% url 'car-detail' instance.car.pk %}">{{instance.car.carModel}}</a> ({{ instance.due_back }})
+      </li>
+      {% endfor %}
+    </ul>
+
+    {% else %}
+      <p>There are no cars rented.</p>
+    {% endif %}
+{% endblock %}

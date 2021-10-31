@@ -4,6 +4,7 @@ from django.db.models.fields import CharField, DateField
 from django.db.models.fields.related import ForeignKey, ManyToManyField
 from django.db.models.functions.comparison import Coalesce
 from django.urls import reverse
+from django.contrib.auth.models import User
 import uuid # required for specific instance of a car
 
 # Create your models here.
@@ -37,6 +38,7 @@ class CarInstance(models.Model):
     #fields
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, help_text="unique car ID")
     car = ForeignKey(Car, on_delete=RESTRICT, null=True)
+    renter = ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
     due_back = models.DateField(null=True, blank=True)
     year = models.IntegerField()
     color = CharField(max_length=20, null=True)

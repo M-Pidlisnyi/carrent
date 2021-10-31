@@ -6,5 +6,6 @@ urlpatterns = [
     path('cars/', views.CarListView.as_view(), name='cars'),
     path('car/<int:pk>', views.CarDetailView.as_view(), name="car-detail"),
     path('brands/', views.BrandListView.as_view(), name='brands'),
-    path('brand/<int:pk>', views.BrandDetailView.as_view(), name='brand-detail')
+    path('brand/<int:pk>', views.BrandDetailView.as_view(), name='brand-detail'),
+    path('mycars/', views.OnRentView.as_view(), name='my-rent')
 ]
